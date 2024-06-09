@@ -4,6 +4,7 @@ class Bitcoin < Formula
   url "https://bitcoincore.org/bin/bitcoin-core-26.1/bitcoin-26.1.tar.gz"
   sha256 "9164ee5d717b4a20cb09f0496544d9d32f365734814fe399f5cdb4552a9b35ee"
   license "MIT"
+  revision 1
   head "https://github.com/bitcoin/bitcoin.git", branch: "master"
 
   livecheck do
