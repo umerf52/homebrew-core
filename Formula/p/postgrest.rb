@@ -2,8 +2,8 @@ class Postgrest < Formula
   desc "Serves a fully RESTful API from any existing PostgreSQL database"
   homepage "https://github.com/PostgREST/postgrest"
   # TODO: Try to switch `ghc@9.2` to `ghc` when postgrest.cabal allows base>=4.17
-  url "https://github.com/PostgREST/postgrest/archive/refs/tags/v12.0.3.tar.gz"
-  sha256 "cdc3524f5a44a2b6236e7909861d17ae8b8871fc3763d2f1c3c07c56ab52ff70"
+  url "https://github.com/PostgREST/postgrest/archive/refs/tags/v12.2.0.tar.gz"
+  sha256 "fc39292ddf8c9bd802621c85a396cb2524d8c49cd5a11ed313a245fc10161bbd"
   license "MIT"
   head "https://github.com/PostgREST/postgrest.git", branch: "main"
 
@@ -26,6 +26,8 @@ class Postgrest < Formula
   depends_on "ghc@9.2" => :build
   depends_on "libpq"
 
+  uses_from_macos "zlib"
+
   def install
     system "cabal", "v2-update"
     system "cabal", "v2-install", *std_cabal_v2_args
@@ -34,7 +36,7 @@ class Postgrest < Formula
   test do
     output = shell_output("#{bin}/postgrest --dump-config 2>&1")
     assert_match "db-anon-role", output
-    assert_match "An error ocurred when trying to query database settings", output
+    assert_match "Database connection error. Retrying the connection", output
 
     assert_match version.to_s, shell_output("#{bin}/postgrest --version")
   end
