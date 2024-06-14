@@ -3,8 +3,8 @@ require "language/node"
 class WebtorrentCli < Formula
   desc "Command-line streaming torrent client"
   homepage "https://webtorrent.io/"
-  url "https://registry.npmjs.org/webtorrent-cli/-/webtorrent-cli-4.1.0.tgz"
-  sha256 "3b7bac7470e65540e45ed92b8b8d70008bbeca36bf96e81318c15bb9dee8b942"
+  url "https://registry.npmjs.org/webtorrent-cli/-/webtorrent-cli-5.1.1.tgz"
+  sha256 "f1a1c78adf6dfed3f72e3a3482323a423be9cfe9e33bfd051ae2e36a8fe118a4"
   license "MIT"
 
   bottle do
@@ -20,6 +20,7 @@ class WebtorrentCli < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "5b87f6ede3b7fa60052d477c30c12c72f2cf0d2c50223376d05579c5f43e7ee1"
   end
 
+  depends_on "cmake" => :build
   depends_on "node"
 
   def install
