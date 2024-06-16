@@ -6,7 +6,7 @@ class Manim < Formula
   url "https://files.pythonhosted.org/packages/83/5f/717ba528eb191124211036ec710bafd605dc7f7bb948a41219a8dd1124b6/manim-0.18.1.tar.gz"
   sha256 "4bf2b479d258b410259c6828261fe79e107beb8f2dd04ebfa73b96bcefdde93d"
   license "MIT"
-  revision 1
+  revision 2
   head "https://github.com/manimCommunity/manim.git", branch: "main"
 
   bottle do
