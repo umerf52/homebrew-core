@@ -6,6 +6,7 @@ class ScikitImage < Formula
   url "https://files.pythonhosted.org/packages/5d/c5/bcd66bf5aae5587d3b4b69c74bee30889c46c9778e858942ce93a030e1f3/scikit_image-0.24.0.tar.gz"
   sha256 "5d16efe95da8edbeb363e0c4157b99becbd650a60b77f6e3af5768b66cf007ab"
   license "BSD-3-Clause"
+  revision 1
   head "https://github.com/scikit-image/scikit-image.git", branch: "main"
 
   bottle do
