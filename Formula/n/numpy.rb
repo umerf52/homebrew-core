@@ -1,15 +1,10 @@
 class Numpy < Formula
   desc "Package for scientific computing with Python"
   homepage "https://www.numpy.org/"
+  url "https://files.pythonhosted.org/packages/05/35/fb1ada118002df3fe91b5c3b28bc0d90f879b881a5d8f68b1f9b79c44bfe/numpy-2.0.0.tar.gz"
+  sha256 "cf5d1c9e6837f8af9f92b6bd3e86d513cdc11f60fd62185cc49ec7d1aba34864"
   license "BSD-3-Clause"
   head "https://github.com/numpy/numpy.git", branch: "main"
-
-  stable do
-    url "https://files.pythonhosted.org/packages/65/6e/09db70a523a96d25e115e71cc56a6f9031e7b8cd166c1ac8438307c14058/numpy-1.26.4.tar.gz"
-    sha256 "2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010"
-
-    depends_on "python-setuptools" => :build
-  end
 
   bottle do
     sha256 cellar: :any,                 arm64_sonoma:   "e5a11ee6e1e4b3ead073e1ee05182f7b31d8b34a1c37902e74d2a944172d4f62"
@@ -37,7 +32,7 @@ class Numpy < Formula
   def pythons
     deps.map(&:to_formula)
         .select { |f| f.name.start_with?("python@") }
-        .sort_by(&:version) # so that `bin/f2py` and `bin/f2py3` use newest python
+        .sort_by(&:version) # so scripts like `bin/f2py` use newest python
   end
 
   def install
@@ -57,8 +52,8 @@ class Numpy < Formula
 
   test do
     pythons.each do |python|
-      python_exe = python.opt_libexec/"bin/python"
-      system python_exe, "-c", <<~EOS
+      python3 = python.opt_libexec/"bin/python"
+      system python3, "-c", <<~EOS
         import numpy as np
         t = np.ones((3,3), int)
         assert t.sum() == 9
