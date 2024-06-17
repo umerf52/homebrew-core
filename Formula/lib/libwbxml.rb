@@ -1,8 +1,8 @@
 class Libwbxml < Formula
   desc "Library and tools to parse and encode WBXML documents"
   homepage "https://github.com/libwbxml/libwbxml"
-  url "https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-0.11.9.tar.gz"
-  sha256 "704029f7745abfd58e26b54f15ce7de0d801048a9a359a7e9967f8346baeff3f"
+  url "https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-0.11.10.tar.gz"
+  sha256 "027b77ab7c06458b73cbcf1f06f9cf73b65acdbb2ac170b234c1d736069acae4"
   license "LGPL-2.1-or-later"
   head "https://github.com/libwbxml/libwbxml.git", branch: "master"
 
@@ -24,16 +24,23 @@ class Libwbxml < Formula
   uses_from_macos "expat"
 
   def install
-    # Sandbox fix:
-    # Install in Cellar & then automatically symlink into top-level Module path
-    inreplace "cmake/CMakeLists.txt", "${CMAKE_ROOT}/Modules/",
-                                      "#{share}/cmake/Modules"
+    args = %W[
+      -DBUILD_DOCUMENTATION=ON
+      -DCMAKE_INSTALL_RPATH=#{rpath}
+    ]
+    system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
+  end
 
-    mkdir "build" do
-      system "cmake", "..", *std_cmake_args,
-                            "-DBUILD_DOCUMENTATION=ON",
-                            "-DCMAKE_INSTALL_RPATH=#{rpath}"
-      system "make", "install"
-    end
+  test do
+    (testpath/"input.xml").write <<~EOS
+      <?xml version="1.0"?>
+      <!DOCTYPE sl PUBLIC "-//WAPFORUM//DTD SL 1.0//EN" "http://www.wapforum.org/DTD/sl.dtd">
+      <sl href="http://www.xyz.com/ppaid/123/abc.wml"></sl>
+    EOS
+
+    system bin/"xml2wbxml", "-o", "output.wbxml", "input.xml"
+    assert_predicate testpath/"output.wbxml", :exist?
   end
 end
