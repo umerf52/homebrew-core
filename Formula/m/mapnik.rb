@@ -1,37 +1,12 @@
 class Mapnik < Formula
   desc "Toolkit for developing mapping applications"
   homepage "https://mapnik.org/"
-  license "LGPL-2.1-or-later"
-  revision 29
-  head "https://github.com/mapnik/mapnik.git", branch: "master"
-
   # TODO: Try switching to CMake build on next release as it works better with
   # Homebrew's build environment and avoids `--env=std` when using `scons`.
-  stable do
-    url "https://github.com/mapnik/mapnik/releases/download/v3.1.0/mapnik-v3.1.0.tar.bz2"
-    sha256 "43d76182d2a975212b4ad11524c74e577576c11039fdab5286b828397d8e6261"
-
-    # Fix build with Scons 4 using Arch Linux patch. Remove in the next release.
-    # Ref: https://github.com/mapnik/mapnik/commit/84a05a6597a941acfad220dae3fbfe5d20bfeb26
-    patch do
-      url "https://raw.githubusercontent.com/archlinux/svntogit-community/239768d7cd1217d5910d3f7d8ace86a7f85ad23c/trunk/scons4.patch"
-      sha256 "79a85ddba3ec17b86cb216e21442611498a9f2612f03e98708057b3c3a6e8b06"
-    end
-
-    # Fix build with Boost v1.83 using Arch Linux patch. Remove in the next release.
-    # Ref: https://github.com/mapnik/mapnik/pull/4413
-    patch do
-      url "https://github.com/mapnik/mapnik/commit/26eb76cc07210d564d80d98948770c94d27c5243.patch?full_index=1"
-      sha256 "085408d6a38c77df7f333047bb1568bf0dfdf9c3b87fd9001997ba9b22be6d4c"
-    end
-
-    # Fix build with `boost` 1.85.0 using open PR.
-    # PR ref: https://github.com/mapnik/mapnik/pull/4448
-    patch do
-      url "https://github.com/mapnik/mapnik/commit/8088aa4319fd54d41e9b8534b964d113f687fc7f.patch?full_index=1"
-      sha256 "3d37cfb1b52a93e3deec09f290070d9ef8fdb85a4c5c393dd8ca924d8921d5a3"
-    end
-  end
+  url "https://github.com/mapnik/mapnik/releases/download/v4.0.0/mapnik-v4.0.0.tar.bz2"
+  sha256 "413711ad4d4986dd9974d1ed48a412732ad1736c4f3d77f1df6eddf46f5b239b"
+  license "LGPL-2.1-or-later"
+  head "https://github.com/mapnik/mapnik.git", branch: "master"
 
   livecheck do
     url :stable

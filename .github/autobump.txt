@@ -1472,6 +1472,7 @@ man-db
 manifest-tool
 mantra
 mapcidr
+mapnik
 mapserver
 mariadb
 mariadb@10.11
