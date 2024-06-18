@@ -6,6 +6,7 @@ class SlitherAnalyzer < Formula
   url "https://files.pythonhosted.org/packages/40/e4/83b4a1bceb17dfb9f83bfc921bd47832a3252fb5b55e92b2591b28d8a3d3/slither_analyzer-0.10.3.tar.gz"
   sha256 "5e6c96c0428b79159fbb5f08ff4ed9dc0f1c47ac5af240679fc4afc34762c60b"
   license "AGPL-3.0-only"
+  revision 1
   head "https://github.com/crytic/slither.git", branch: "master"
 
   bottle do
@@ -98,8 +99,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "eth-typing" do
-    url "https://files.pythonhosted.org/packages/ff/0a/733167844f5daf2b32a070358bb456d4c13d1c34786cd6c78c3948a92b83/eth_typing-4.2.3.tar.gz"
-    sha256 "8ee3ae7d4136d14fcb955c34f9dbef8e52170984d4dc68c0ab0d61621eab29d8"
+    url "https://files.pythonhosted.org/packages/e7/ab/a3256296a299995fded3f8b72ce1bf3791f8ca6f24a8d310d31b9268c959/eth_typing-4.3.1.tar.gz"
+    sha256 "4504559c87a9f71f4b99aa5a1e0549adaa7f192cbf8e37a295acfcddb1b5412d"
   end
 
   resource "eth-utils" do
@@ -143,8 +144,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/ee/b5/b43a27ac7472e1818c4bafd44430e69605baefe1f34440593e0332ec8b4d/packaging-24.0.tar.gz"
-    sha256 "eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"
+    url "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz"
+    sha256 "026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"
   end
 
   resource "parsimonious" do
@@ -158,8 +159,8 @@ class SlitherAnalyzer < Formula
   end
 
   resource "protobuf" do
-    url "https://files.pythonhosted.org/packages/73/cb/8d83e166a822d893c2c07ef4a57598873634b65a68153ca62b6ba85f67b9/protobuf-5.27.0.tar.gz"
-    sha256 "07f2b9a15255e3cf3f137d884af7972407b556a7a220912b252f26dc3121e6bf"
+    url "https://files.pythonhosted.org/packages/20/5f/00d891817d4031bbf4e846a99834bf949a76714c10a726833aa184176772/protobuf-5.27.1.tar.gz"
+    sha256 "df5e5b8e39b7d1c25b186ffdf9f44f40f810bbcc9d2b71d9d3156fee5a9adf15"
   end
 
   resource "pycryptodome" do
@@ -208,13 +209,13 @@ class SlitherAnalyzer < Formula
   end
 
   resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/e8/fb/4217a963512b9646274fe4ce0aebc8ebff09bbb86c458c6163846bb65d9d/typing_extensions-4.12.1.tar.gz"
-    sha256 "915f5e35ff76f56588223f15fdd5938f9a1cf9195c0de25130c627e4d597f6d1"
+    url "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz"
+    sha256 "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/7a/50/7fd50a27caa0652cd4caf224aa87741ea41d3265ad13f010886167cfcc79/urllib3-2.2.1.tar.gz"
-    sha256 "d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"
+    url "https://files.pythonhosted.org/packages/43/6d/fa469ae21497ddc8bc93e5877702dca7cb8f911e337aca7452b5724f1bb6/urllib3-2.2.2.tar.gz"
+    sha256 "dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
   end
 
   resource "wcwidth" do
