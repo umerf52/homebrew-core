@@ -1,9 +1,9 @@
 class Libassuan < Formula
   desc "Assuan IPC Library"
   homepage "https://www.gnupg.org/related_software/libassuan/"
-  url "https://gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.7.tar.bz2"
-  mirror "https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/libassuan/libassuan-2.5.7.tar.bz2"
-  sha256 "0103081ffc27838a2e50479153ca105e873d3d65d8a9593282e9c94c7e6afb76"
+  url "https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.0.tar.bz2"
+  mirror "https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/libassuan/libassuan-3.0.0.tar.bz2"
+  sha256 "0b160cbb898b852c6c04314b9a63e90ca87501305ad72a58a010f808665bbaf6"
   license "GPL-3.0-only"
 
   livecheck do
