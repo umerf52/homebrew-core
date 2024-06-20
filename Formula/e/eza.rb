@@ -1,8 +1,8 @@
 class Eza < Formula
   desc "Modern, maintained replacement for ls"
   homepage "https://github.com/eza-community/eza"
-  url "https://github.com/eza-community/eza/archive/refs/tags/v0.18.18.tar.gz"
-  sha256 "437ea76838fea2464b9592f1adef7df0412e27c9fc2a3e7ff47efcdfb17457f5"
+  url "https://github.com/eza-community/eza/archive/refs/tags/v0.18.19.tar.gz"
+  sha256 "b721cea8d9f7da7a9e17298911632912606bc51a983a0c1fc52340dbc4dc6ffa"
   license "MIT"
 
   bottle do
@@ -20,7 +20,11 @@ class Eza < Formula
   depends_on "rust" => :build
   depends_on "libgit2"
 
+  uses_from_macos "zlib"
+
   def install
+    ENV["LIBGIT2_NO_VENDOR"] = "1"
+
     system "cargo", "install", *std_cargo_args
 
     bash_completion.install "completions/bash/eza"
