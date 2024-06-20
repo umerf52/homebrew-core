@@ -2250,6 +2250,7 @@ sshs
 sslh
 sslscan
 stackql
+stanc3
 stanford-corenlp
 star
 staticcheck
