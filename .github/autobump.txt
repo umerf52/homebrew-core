@@ -84,6 +84,7 @@ argocd
 argocd-autopilot
 argocd-vault-plugin
 argparse
+argus-clients
 argyll-cms
 arjun
 arkade

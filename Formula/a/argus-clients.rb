@@ -1,8 +1,8 @@
 class ArgusClients < Formula
   desc "Audit Record Generation and Utilization System clients"
   homepage "https://openargus.org"
-  url "https://github.com/openargus/clients/archive/refs/tags/v3.0.8.4.tar.gz"
-  sha256 "1e71e1ec84a311af4ac6c6c9e7a3231e10591e215b84d7e0841735b11db3127a"
+  url "https://github.com/openargus/clients/archive/refs/tags/v5.0.0.tar.gz"
+  sha256 "c695e69f8cfffcb6ed978f1f29b1292a2638e4882a66ea8652052ba1e42fe8bc"
   license "GPL-2.0-or-later"
 
   bottle do
@@ -15,6 +15,7 @@ class ArgusClients < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "9810d90c908373e299c23598590268144b3cc35c15ecf5e73fb8dcc300af4411"
   end
 
+  depends_on "perl"
   depends_on "readline"
   depends_on "rrdtool"
 
@@ -25,15 +26,34 @@ class ArgusClients < Formula
     depends_on "libtirpc"
   end
 
+  resource "Switch" do
+    url "https://cpan.metacpan.org/authors/id/C/CH/CHORNY/Switch-2.17.tar.gz"
+    sha256 "31354975140fe6235ac130a109496491ad33dd42f9c62189e23f49f75f936d75"
+  end
+
   def install
     ENV.append_to_cflags "-I#{Formula["libtirpc"].opt_include}/tirpc" if OS.linux?
-    ENV.append "CFLAGS", "-std=gnu89"
-    system "./configure", "--prefix=#{prefix}"
+
+    ENV.prepend_create_path "PERL5LIB", libexec/"lib/perl5"
+    resources.each do |r|
+      r.stage do
+        system "perl", "Makefile.PL", "INSTALL_BASE=#{libexec}"
+        system "make"
+        system "make", "install"
+      end
+    end
+
+    ENV["PERL_EXT_LIB"] = libexec/"lib/perl5"
+
+    system "./configure", "--prefix=#{prefix}", "--without-examples"
     system "make"
     system "make", "install"
   end
 
   test do
+    ENV["PERL5LIB"] = libexec/"lib/perl5"
+    system "perl", "-e", "use qosient::util;"
+
     assert_match "Ra Version #{version}", shell_output("#{bin}/ra -h", 1)
   end
 end
