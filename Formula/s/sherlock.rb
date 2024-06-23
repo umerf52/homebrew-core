@@ -6,7 +6,7 @@ class Sherlock < Formula
   url "https://files.pythonhosted.org/packages/eb/57/0ac8fcde9e2dbdacb20f48e8c20f3049972a59839d8bccbef0799b944140/sherlock_project-0.14.4.tar.gz"
   sha256 "3c0edc4ebbcdb8eae03d5ce2e377e1c6839d73b8e77388b70125120537917022"
   license "MIT"
-  revision 1
+  revision 2
   head "https://github.com/sherlock-project/sherlock.git", branch: "master"
 
   bottle do
