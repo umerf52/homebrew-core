@@ -15,7 +15,9 @@ class Elfutils < Formula
   end
 
   depends_on "m4" => :build
+  depends_on "pkg-config" => :build
   depends_on "bzip2"
+  depends_on "curl"
   depends_on :linux
   depends_on "xz"
   depends_on "zlib"
@@ -25,8 +27,8 @@ class Elfutils < Formula
     system "./configure",
            *std_configure_args,
            "--disable-silent-rules",
-           "--disable-libdebuginfod",
            "--disable-debuginfod",
+           "--enable-libdebuginfod",
            "--program-prefix=elfutils-",
            "--with-bzlib",
            "--with-lzma",
